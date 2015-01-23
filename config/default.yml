@@ -1,0 +1,32 @@
+#wechat config
+wechat:
+  appid: wx1903fcbc53deafe0
+  state: true
+  scope: snsapi_userinfo
+  appsecret: c7aa389c8a0f9adb8ba50b89c3f77636
+  callbackURL: http://liangyali.duapp.com/auth/wechat/callback
+
+# session config
+session:
+  key: ''
+  secret: 'test'
+  cookie:
+    path: '/'
+    httpOnly: true
+    maxAge: null
+  resave: true
+  saveUninitialized: true
+  proxy: null
+
+#ims
+ims:
+  baseUrl: http://111.207.166.195/api
+  apiKey: 7AB4F1BB-7E70-46CF-98E8-B97F841C30EA
+  clientVersion: 2.3
+
+#elasticsearch
+elasticsearch:
+  host: 10.32.11.196:9200
+  maxSockets: 100
+
+
