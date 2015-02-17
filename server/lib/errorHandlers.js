@@ -4,6 +4,9 @@ var _ = require('lodash');
 
 exports.fileNotFound = function (template) {
     return function (req, res, next) {
+
+
+        throw new Error('aaa');
         var model = { url: req.url, statusCode: 404 };
         if (req.xhr) {
             res.send(404, model);

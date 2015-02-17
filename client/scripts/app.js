@@ -28,11 +28,28 @@ angular
             controller: 'ContactsCtrl'
         });
 
+
+        // contacts/new
+        $stateProvider.state('contacts.new', {
+            url: '/new',
+            templateUrl: 'views/contacts/contacts.new.html',
+            controller: 'ContactsNewCtrl'
+        });
+
+
         // contacts/:id
         $stateProvider.state('contacts.detail', {
             url: '/:id',
             templateUrl: 'views/contacts/contacts.detail.html',
             controller: 'ContactsDetailCtrl'
+        });
+
+
+        // contacts/:id/edit
+        $stateProvider.state('contacts.edit', {
+            url: '/:id/edit',
+            templateUrl: 'views/contacts/contacts.edit.modal.html',
+            controller: 'ContactsEditCtrl'
         });
 
 

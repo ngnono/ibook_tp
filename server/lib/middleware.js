@@ -65,11 +65,18 @@ module.exports = function (app, config) {
         directory: '../controllers'
     }));
 
+
+//    app.use(function(req,res,next){
+//
+//        next(new Error('aaa'));
+//    }) ;
+
     /**
      * error Handler
      */
-    app.use(errHandlers.serverError('error/50x', config));
     app.use(errHandlers.fileNotFound('error/404'));
+    app.use(errHandlers.serverError('error/50x', config));
+
 
     return app;
 };

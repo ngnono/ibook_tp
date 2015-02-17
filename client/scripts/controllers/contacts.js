@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('ibookApp')
-    .controller('ContactsCtrl', function ($scope, $rootScope, $stateParams, $http, $ionicLoading, $timeout) {
+    .controller('ContactsCtrl', function ($scope, $rootScope, $stateParams, $http, $ionicLoading, $ionicPopup, $timeout) {
 
-        $scope.searchText='';
+        $scope.searchText = '';
         $scope.offset = 0;
         $scope.pageIndex = 0;
         $scope.data = {
@@ -50,7 +50,7 @@ angular.module('ibookApp')
                     duration: 3000
                 });
             });
-            ;
+
         };
 
         $scope.loadMore = function () {
@@ -65,5 +65,63 @@ angular.module('ibookApp')
                 size: 10
             });
         };
+
+        $scope.deleteContact = function (obj) {
+            var confirmPopup = $ionicPopup.confirm({
+                title: '您确定要删除吗？',
+                template: '您确定要删除联系人:' + obj.name || obj.id
+            });
+
+            confirmPopup.then(function (res) {
+                    if (res) {
+                        $http.delete('api/contacts/' + obj.id)
+                            .success(function (data, status, headers, config) {
+
+                                if ($scope.data.items) {
+//                                    var t = $scope.data.items[obj.$index];
+//                                    if (t._id === obj.id) {
+                                    $timeout(function () {
+                                        delete   $scope.data.items[obj.$index];
+                                    });
+
+//                                    }
+
+//                                    var alertPopup = $ionicPopup.alert({
+//                                            title: '删错了。。。。',
+//                                            template: obj.$index + '' + ' _id:' + t._id
+//                                        }
+//                                    );
+//                                    alertPopup.then(function (res) {
+//                                        //console.log('Thank you for not eating my delicious ice cream cone');
+//                                    });
+
+                                }
+
+
+                            }
+                        )
+                            .
+                            error(function (data, status, headers, config) {
+
+                                var alertPopup = $ionicPopup.alert({
+                                    title: '删除联系人发生异常',
+                                    template: data.message
+                                });
+                                alertPopup.then(function (res) {
+                                    //console.log('Thank you for not eating my delicious ice cream cone');
+                                });
+                            });
+
+
+                    }
+                    else {
+                        // console.log('You are not sure');
+                    }
+                }
+            )
+            ;
+
+        };
     }
-);
+)
+;

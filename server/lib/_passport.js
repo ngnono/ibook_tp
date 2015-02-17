@@ -16,12 +16,12 @@ module.exports = function _passport(app, config) {
         UserModel.getUserInfoByOuterId(openid)
             .then(function (userInfo) {
                 if (userInfo.isSuccessful) {
-                    return done(err, userInfo.data);
+                    return done(null, userInfo.data);
                 } else {
-                    return done(userInfo, null);
+                    return done(userInfo);
                 }
             }, function (err) {
-                return done(err, null);
+                return done(err);
             });
     }));
 

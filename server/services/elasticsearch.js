@@ -7,4 +7,4 @@ var client = new elasticsearch.Client(config.get('elasticsearch'));
 
 module.exports = client;
 
-exports.indexName = 'intime';
+module.exports.indexName = 'intime';

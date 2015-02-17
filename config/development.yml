@@ -9,3 +9,8 @@ session:
   resave: true
   saveUninitialized: true
   proxy: null
+
+
+  #elasticsearch
+elasticsearch:
+  indexName: intime

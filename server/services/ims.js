@@ -7,6 +7,10 @@ var routes = {
     'customer.outSiteLogin': {
         uri: '/customer/outsitelogin',
         method: 'POST'
+    },
+    'customer.portrait': {
+        uri: '/customer/portrait',
+        method: 'POST'
     }
 };
 
